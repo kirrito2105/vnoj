@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng dẫn Cài đặt VNOJ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .code-block {
+            position: relative;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            background-color: #4B5563; /* Gray-700 */
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px; /* Slightly rounded */
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        .copy-btn:hover {
+            background-color: #374151; /* Gray-800 */
+        }
+        .copy-btn.copied {
+            background-color: #10B981; /* Emerald-500 for copied state */
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-200">
+
+    <div class="container mx-auto px-4 py-8 md:py-12 max-w-4xl">
+        
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-50">Hướng dẫn Cài đặt VNOJ</h1>
+            <p class="mt-4 text-lg text-gray-400">Từng bước cài đặt một hệ thống Online Judge (DMOJ) cục bộ.</p>
+        </header>
+
+        <main class="space-y-8">
+            <!-- Step 1: Môi trường và Clone mã nguồn -->
+            <section class="bg-gray-800 p-6 rounded-sm shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 border-l-4 border-gray-600 pl-4 text-gray-50">Bước 1: Thiết lập Môi trường & Tải Mã nguồn</h2>
+                <p class="mb-4">Đầu tiên, chúng ta cần tạo một môi trường ảo Python riêng biệt để tránh xung đột thư viện và sau đó tải mã nguồn của VNOJ từ GitHub.</p>
+                
+                <p class="mb-2 font-medium">1. Tạo và kích hoạt môi trường ảo:</p>
+                <div class="code-block bg-gray-900 text-white p-4 rounded-sm mb-4">
+                    <pre><code id="code1">python3.10 -m venv venv
+. venv/bin/activate</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard('code1', this)">Sao chép</button>
+                </div>
+
+                <p class="mb-2 font-medium">2. Tải mã nguồn từ GitHub:</p>
+                <p class="mb-2 text-sm text-gray-400">Lệnh `git clone` sẽ tải toàn bộ mã nguồn. Tùy chọn `--recursive` đảm bảo các submodule cần thiết cũng được tải về.</p>
+                <div class="code-block bg-gray-900 text-white p-4 rounded-sm">
+                    <pre><code id="code2">git clone --recursive https://github.com/VNOI-Admin/OJ site</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard('code2', this)">Sao chép</button>
+                </div>
+            </section>
+
+            <!-- Step 2: Cấu hình và Cài đặt -->
+            <section class="bg-gray-800 p-6 rounded-sm shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 border-l-4 border-gray-600 pl-4 text-gray-50">Bước 2: Cấu hình và Cài đặt Tự động</h2>
+                <p class="mb-4">Di chuyển vào thư mục `dmoj`, tải về các tệp cấu hình và chạy kịch bản cài đặt.</p>
+
+                <p class="mb-2 font-medium">1. Di chuyển vào thư mục và tải tệp cấu hình:</p>
+                <p class="mb-2 text-sm text-gray-400">Tệp `local_settings.py` dùng để lưu các thông số cấu hình riêng của hệ thống.</p>
+                <div class="code-block bg-gray-900 text-white p-4 rounded-sm">
+                    <pre><code id="code3">cd site/dmoj
+wget https://raw.githubusercontent.com/VietThienTran/DeploymentTools/main/VNOJ/sample-config/local_settings.py</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard('code3', this)">Sao chép</button>
+                </div>
+                
+                <div class="mt-4 mb-4 p-4 bg-gray-700 border border-gray-600 rounded-sm">
+                    <p class="font-semibold text-gray-200">Quan trọng:</p>
+                    <p class="text-gray-300">Sau khi tải về, bạn cần mở tệp `local_settings.py` để sửa đổi tên người dùng (user) và cấu hình lại email để có thể xác thực khi đăng ký tài khoản mới.</p>
+                </div>
+
+                <p class="mb-2 font-medium">2. Tải và chạy kịch bản cài đặt tự động:</p>
+                <p class="mb-2 text-sm text-gray-400">Khi quá trình chuẩn bị đã hoàn tất, khởi chạy kịch bản để cài đặt tự động các gói phụ thuộc. Quá trình này có thể mất vài phút.</p>
+                <div class="code-block bg-gray-900 text-white p-4 rounded-sm">
+                    <pre><code id="code3-2">wget https://raw.githubusercontent.com/VietThienTran/DeploymentTools/main/VNOJ/sample-config/auto-install.sh
+bash auto-install.sh</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard('code3-2', this)">Sao chép</button>
+                </div>
+            </section>
+
+            <!-- Step 3: Cấu hình Judge -->
+            <section class="bg-gray-800 p-6 rounded-sm shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 border-l-4 border-gray-600 pl-4 text-gray-50">Bước 3: Cấu hình Máy chấm (Judge)</h2>
+                <p class="mb-4">Máy chấm là thành phần cốt lõi để biên dịch và thực thi các bài nộp. Chúng ta cần cấu hình nó để kết nối với trang web chính.</p>
+                
+                <div class="code-block bg-gray-900 text-white p-4 rounded-sm">
+                    <pre><code id="code4">cd ../problems
+wget https://raw.githubusercontent.com/VietThienTran/DeploymentTools/main/VNOJ/sample-config/judge01.yml
+dmoj-autoconf</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard('code4', this)">Sao chép</button>
+                </div>
+                <p class="mt-4 text-sm text-gray-400">Lệnh `dmoj-autoconf` sẽ tự động tạo các tệp cấu hình cần thiết cho máy chấm dựa trên tệp `.yml` đã tải về.</p>
+            </section>
+
+            <!-- Step 4: Khởi chạy hệ thống -->
+            <section class="bg-gray-800 p-6 rounded-sm shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 border-l-4 border-gray-600 pl-4 text-gray-50">Bước 4: Khởi chạy Hệ thống</h2>
+                <p class="mb-4">Bây giờ, tất cả các thành phần đã sẵn sàng. Chúng ta sẽ khởi chạy 3 tiến trình chính: <strong class="font-semibold">bridged</strong> (cầu nối), <strong class="font-semibold">judge</strong> (máy chấm), và <strong class="font-semibold">web server</strong> (trang web).</p>
+                
+                <p class="mb-2 font-medium">1. Quay lại thư mục `site`:</p>
+                 <div class="code-block bg-gray-900 text-white p-4 rounded-sm mb-4">
+                    <pre><code id="code5">cd ..</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard('code5', this)">Sao chép</button>
+                </div>
+
+                <p class="mb-2 font-medium">2. Chạy các dịch vụ:</p>
+                <p class="mb-2 text-sm text-gray-400">Chúng ta sử dụng `nohup` và `&` để chạy các tiến trình trong nền, giúp chúng tiếp tục hoạt động ngay cả khi bạn đóng cửa sổ terminal.</p>
+                <div class="code-block bg-gray-900 text-white p-4 rounded-sm">
+                    <pre><code id="code6">nohup ./manage.py runbridged &
+nohup dmoj -c problems/judge01.yml 127.0.0.1 &
+nohup ./manage.py runserver 0.0.0.0:8000 &</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard('code6', this)">Sao chép</button>
+                </div>
+                
+                <div class="mt-6 p-4 bg-gray-700 border border-gray-600 rounded-sm">
+                    <p class="font-semibold text-gray-200">Hoàn tất!</p>
+                    <p class="text-gray-300">Hệ thống của bạn hiện đang chạy. Bạn có thể truy cập vào trang web tại địa chỉ: <a href="http://127.0.0.1:8000" target="_blank" class="font-bold underline hover:text-gray-400">http://127.0.0.1:8000</a></p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 text-gray-500">
+            <p>&copy; 2024. Hướng dẫn được tạo bởi Gemini.</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId, button) {
+            const codeEl = document.getElementById(elementId);
+            const textToCopy = codeEl.innerText;
+            
+            // Use a temporary textarea element to copy the text
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                button.textContent = 'Đã sao chép!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Sao chép';
+                    button.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                console.error('Không thể sao chép:', err);
+                button.textContent = 'Lỗi!';
+            }
+            document.body.removeChild(textarea);
+        }
+    </script>
+</body>
+</html>
