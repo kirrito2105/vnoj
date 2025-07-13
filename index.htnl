@@ -73,7 +73,7 @@
                 <p class="mb-2 text-sm text-gray-400">Tệp `local_settings.py` dùng để lưu các thông số cấu hình riêng của hệ thống.</p>
                 <div class="code-block bg-gray-900 text-white p-4 rounded-sm">
                     <pre><code id="code3">cd site/dmoj
-wget https://raw.githubusercontent.com/VietThienTran/DeploymentTools/main/VNOJ/sample-config/local_settings.py</code></pre>
+wget https://raw.githubusercontent.com/kirrito2105/vnoj/refs/heads/main/local_settings.py</code></pre>
                     <button class="copy-btn" onclick="copyToClipboard('code3', this)">Sao chép</button>
                 </div>
                 
@@ -85,8 +85,7 @@ wget https://raw.githubusercontent.com/VietThienTran/DeploymentTools/main/VNOJ/s
                 <p class="mb-2 font-medium">2. Tải và chạy kịch bản cài đặt tự động:</p>
                 <p class="mb-2 text-sm text-gray-400">Khi quá trình chuẩn bị đã hoàn tất, khởi chạy kịch bản để cài đặt tự động các gói phụ thuộc. Quá trình này có thể mất vài phút.</p>
                 <div class="code-block bg-gray-900 text-white p-4 rounded-sm">
-                    <pre><code id="code3-2">wget https://raw.githubusercontent.com/VietThienTran/DeploymentTools/main/VNOJ/sample-config/auto-install.sh
-bash auto-install.sh</code></pre>
+                    <pre><code id="code3-2">wget https://raw.githubusercontent.com/kirrito2105/vnoj/refs/heads/main/auto-install.sh</code></pre>
                     <button class="copy-btn" onclick="copyToClipboard('code3-2', this)">Sao chép</button>
                 </div>
             </section>
