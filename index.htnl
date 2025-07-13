@@ -133,7 +133,7 @@ nohup ./manage.py runserver 0.0.0.0:8000 &</code></pre>
         </main>
 
         <footer class="text-center mt-12 text-gray-500">
-            <p>&copy; 2024. Hướng dẫn được tạo bởi Gemini.</p>
+            <p>&copy; 2025. Hướng dẫn được tạo bởi AGOJ.</p>
         </footer>
     </div>
 
